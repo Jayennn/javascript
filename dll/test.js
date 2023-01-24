@@ -1,0 +1,1 @@
+console.log('text ini tercetak di console browser');
