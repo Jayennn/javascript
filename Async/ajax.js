@@ -1,46 +1,58 @@
-function getProductsUrl(keyword) {
-    return `https://api.spaceflightnewsapi.net/v3/blogs${keyword}`;
+function getUrl(keyword) {
+    return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`;
 }
 
-function getProduct(keyword) {
-    // AJAX Code
+// Function Get URL 😎👆
+
+
+function getDatas(keywordGetUrl) {
     const ajax = new XMLHttpRequest();
-    ajax.onload = function(){
-        const data = JSON.parse(ajax.responseText);
-        clearProduct();
-        displayProducts(data);
-    }
-
-
-    const url = getProductsUrl(keyword)
-    ajax.open("GET", url)
+    ajax.open("GET", getUrl(keywordGetUrl));
+    // AJAX (method, url)
     ajax.send();
+    ajax.onload = () => {
+        const data = JSON.parse(ajax.response);
+        if (ajax.status === 200) {
+            console.log(JSON.parse(ajax.response));
+        } else {
+            console.log("error");
+        }
 
-    // tidak bisa dilakukan secara sync
-    // const response = JSON.parse(ajax.responseText);
-    // console.log(response);
+        clearDatas();
+        //call function😎👆;
+
+        displayDatas(data);
+        //call function😎👆;
+        
+    };
+        //AJAX code... 😎👆
 }
 
-function clearProduct() {
-    const productUl = document.getElementById("products")
-    productUl.textContent = "";
+function clearDatas() {
+    const parentUl = document.getElementById("list-data")
+    parentUl.textContent = "";
 }
 
-function displayProducts(data) {
-    data.data.products.foreach((product) => {
-        displayProducts(product)
+
+function displayDatas(datas) {
+    datas.data.products.map((datas) => {
+        displayData(datas)
     })
+
+    // Object array
 }
 
-function displayProduct(product) {
-    const productLi = document.createElement("li");
-    productLi.textContent = product.name;
 
-    const productUl = document.getElementById("products")
-    productUl.appendChild(productLi);
+function displayData(data) {
+    const displayDataLi = document.createElement("li");
+    displayDataLi.textContent = data.name;
+    // create & buat element <li> dan panggil data (data.name(bersifat object));
+
+
+    const parentUl = document.getElementById("list-data");
+    parentUl.appendChild(displayDataLi);
 }
 
 function buttonClick() {
-    getProduct(document.getElementById("keyword").value)
-    console.log("success click button");
+    getDatas(document.getElementById("keyword").value)
 }

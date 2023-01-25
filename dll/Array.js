@@ -1,6 +1,6 @@
-const array = [
-    'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'
-]
+// const array = [
+//     'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'
+// ]
 
 // for (var i = 0; i < array.length; i++){
 //     console.log("Hari Ke-" + (i + 1) + ' ' + array[i]);
@@ -44,7 +44,10 @@ const array = [
     //     console.log(array2);
     
     
-// 5. sort 
-var array1 = ['b', 'c', 'a']
-    
-    console.log(array1.sort());
+// 5. sort
+// var array1 = ['b', 'c', 'a']
+//     console.log(array1.sort());
+
+// var arrays = [1, 2, 3, 4, 5];
+
+// arrays.map(())
